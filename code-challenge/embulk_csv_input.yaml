@@ -1,0 +1,27 @@
+in:
+  type: file
+  path_prefix: data/order_details.csv
+  parser:
+    type: csv
+    charset: UTF-8
+    newline: LF
+    delimiter: ','
+    quote: '"'
+    escape: '"'
+    trim_if_not_quoted: false
+    skip_header_lines: 1
+    allow_extra_columns: false
+    allow_optional_columns: false
+    columns:
+    - {name: order_id, type: long}
+    - {name: product_id, type: long}
+    - {name: unit_price, type: double}
+    - {name: quantity, type: long}
+    - {name: discount, type: double}
+
+out:
+  type: file
+  path_prefix: target/order_details
+  file_ext: json
+  formatter:
+    type: jsonl
